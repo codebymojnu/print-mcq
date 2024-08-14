@@ -1,106 +1,113 @@
-/* Tailwind CSS CDN should be linked in HTML for utility classes */
-
 body {
-    font-family: 'Arial', sans-serif;
+  font-family: "Google Sans", "Helvetica Neue", sans-serif;
+  font-size: 1.3rem;
 }
 
 /* Watermark styling */
 .watermark {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0.1;
-    font-size: 6rem;
-    color: #d3d3d3;
-    z-index: -1;
-    transform: rotate(-45deg);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    pointer-events: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  opacity: 0.1;
+  font-size: 6rem;
+  color: #d3d3d3;
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* Question styling */
 .question {
-    background-color: #f0f9ff;
-    border-left: 4px solid #3b82f6;
-    padding: 10px;
-    border-radius: 8px;
+  background-color: #f0f9ff;
+  border-left: 4px solid #3b82f6;
+  padding: 10px;
+  border-radius: 8px;
 }
 
 .question p {
-    font-size: 1.1rem;
-    margin-bottom: 6px;
-    font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+  font-weight: bold;
 }
 
 .question ul {
-    list-style: none;
-    padding-left: 0;
+  list-style: none;
+  padding-left: 0;
 }
 
 .question ul li {
-    margin-bottom: 4px;
-    background-color: #e0f7ff;
-    padding: 8px;
-    border-radius: 4px;
+  margin-bottom: 4px;
+  background-color: #e0f7ff;
+  padding: 8px;
+  border-radius: 4px;
 }
 
 #answers {
-    padding: 8px 0;
+  padding: 8px 0;
 }
 
 /* Print-specific styles */
 @media print {
-    /* Hide all elements that are not part of the paper */
-    body * {
-        visibility: hidden;
-    }
+  body * {
+    visibility: hidden;
+  }
 
-    /* Ensure only the container with the paper content is visible */
-    .container, .container * {
-        visibility: visible;
-    }
+  .container,
+  .container * {
+    visibility: visible;
+  }
 
-    /* Hide the print button */
-    .no-print {
-        display: none;
-    }
+  .no-print {
+    display: none;
+  }
 
-    /* Prevent page breaks inside questions */
-    .question {
-        page-break-inside: avoid;
-    }
+  .question {
+    display: none;
+    page-break-inside: avoid;
+    margin-top: 120px;
+  }
 
-    /* Ensure the paper layout fills the page nicely */
-    .container {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        margin: 0;
-        padding: 20px;
-        border: none;
-        box-shadow: none;
-    }
+  @page {
+    margin-top: 0; /* Add some top margin for the header */
+    margin-bottom: 0; /* Add some bottom margin */
+  }
 
-    /* Hide browser's default header and footer (time, date, URL) */
-    @page {
-        margin-top: 0;
-        margin-bottom: 0;
-    }
+  /* Ensure header is repeated on every page */
+  .container:before {
+    content: "";
+    display: block;
 
-    /* Watermark should be less intense on print */
-    .watermark {
-        opacity: 0.5;
-    }
+    height: 1.5cm;
+  }
 
-    /* Adjust grid layout for equal columns */
-    .grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-    }
+  .flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 20px;
+    background-color: white;
+    margin-top: 0px;
+  }
+
+  .watermark {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    opacity: 0.1;
+    font-size: 6rem;
+    color: #d3d3d3;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
 }

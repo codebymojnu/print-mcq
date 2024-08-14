@@ -1,6 +1,6 @@
 // script.js
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('questions.json')
+    fetch('questions.4.json')
         .then(response => response.json())
         .then(data => {
             const mcqPaper = document.getElementById('mcq-paper');
@@ -17,9 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const optionsList = document.createElement('div');
                 optionsList.className = 'options';
-                
+
                 item.options.forEach((option, i) => {
                     const listItem = document.createElement('li');
+                    listItem.style.listStyleType = 'none';
                     listItem.textContent = `${String.fromCharCode(65 + i)}. ${option}`;
                     optionsList.appendChild(listItem);
                 });
