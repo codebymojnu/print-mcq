@@ -1,6 +1,6 @@
 // script.js
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('questions.4.json')
+    fetch('questions.6.json')
         .then(response => response.json())
         .then(data => {
             const mcqPaper = document.getElementById('mcq-paper');
